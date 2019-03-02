@@ -6,7 +6,7 @@ public class Driver
 {
     public static void main(String[] args)
     {
-        HashMap<String, java.lang.Integer> items = new HashMap<>();
+        HashMap<String, Integer> items = new HashMap<>();
         items.put("gold", 5);
         List<Monster> monsters = new ArrayList<>();
         monsters.add(new Imp( 15, 20, items));
