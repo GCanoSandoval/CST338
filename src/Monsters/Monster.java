@@ -1,4 +1,9 @@
+package Monsters;
+
+import Abilities.Attack;
+
 import java.util.HashMap;
+import java.util.Random;
 
 public abstract class Monster
 {
@@ -6,6 +11,30 @@ public abstract class Monster
     private int xp;
     private int maxHP;
     private HashMap<String, Integer> items;
+    int agi;
+    int def;
+    int str;
+    Attack attack;
+
+    public int getAgi()
+    {
+        return agi;
+    }
+
+    public int getDef()
+    {
+        return def;
+    }
+
+    public int getStr()
+    {
+        return str;
+    }
+
+    public Monster attackTarget(Monster monster)
+    {
+        return monster;
+    }
 
     public int getHp()
     {
@@ -45,6 +74,28 @@ public abstract class Monster
     public void setItems(HashMap<String, Integer> items)
     {
         this.items = items;
+    }
+
+    /*
+     *This method returns an Integer value between min and max
+     * This is bien pinche loco. rand.nextInt() returns a number between 0-n.
+     * To get a value we want, a value between str-maxStr,
+     * we need to get a random number from maxStr-str and add str back in.
+     * @param min an integer
+     * @param max an integer
+     * @return a random integer between min and max
+     */
+
+    Integer getAttribute(Integer min, Integer max)
+    {
+        Random rand = new Random();
+        if(min > max)
+        {
+            Integer temp = min;
+            min = max;
+            max = temp;
+        }
+        return rand.nextInt(max-min) + min;
     }
 
     @Override
